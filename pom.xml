@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.wasdev.maven.parent</groupId>
+        <artifactId>java6-parent</artifactId>
+        <version>1.3</version>
+        <relativePath></relativePath>
+    </parent>
+
+    <groupId>net.wasdev.wlp.sample</groupId>
+    <artifactId>jms11</artifactId>
+    <version>JMSSample</version>
+    <packaging>war</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <name>Liberty Profile Sample - jms1.1</name>
+    <url>https://wasdev.github.io</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://raw.github.com/WASdev/sample.ferret/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+	    <scm>
+        <connection>scm:git:git@github.com:WASdev/sample.jms11.git</connection>
+        <developerConnection>scm:git:git@github.com:WASdev/sample.jms11.git</developerConnection>
+        <url>git@github.com:WASdev/sample.jms11.git</url>
+    </scm>
+
+    <pluginRepositories>
+        <!-- Configure Sonatype OSS Maven snapshots repository -->
+        <pluginRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+	
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>net.wasdev.wlp.maven.plugins</groupId>
+                    <artifactId>liberty-maven-plugin</artifactId>
+                    <version>1.1-SNAPSHOT</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>wlp</id>
+            <activation>
+                <property>
+                    <name>env.IBM_LIBERTY_LICENSE</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>net.wasdev.wlp.maven.plugins</groupId>
+                        <artifactId>liberty-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>create-server</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>install-feature</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>install-feature</goal>
+                                </goals>
+                                <configuration>
+                                    <features>
+                                        <acceptLicense>true</acceptLicense>
+                                        <feature>wasJmsServer-1.0</feature>
+                                        <feature>wasJmsClient-1.1</feature>
+                                        <feature>jmsMdb-3.1</feature>
+                                        </features>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>start-liberty-server</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>start-server</goal>
+                                </goals>
+                                <configuration>
+                                    <background>true</background>
+                                    <verifyTimeout>40</verifyTimeout>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>check-liberty-server</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>server-status</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>deploy web application</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                                <configuration>
+                                    <appArchive>${project.build.directory}${file.separator}${project.artifactId}-${project.version}.war</appArchive>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <install>
+                                <licenseCode>${env.IBM_LIBERTY_LICENSE}</licenseCode>
+                            </install>
+                            <configFile>src/main/wlp/server.xml</configFile>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+   </profiles>
+</project>
+	
