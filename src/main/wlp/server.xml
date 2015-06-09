@@ -10,8 +10,8 @@
 
 
 	<httpEndpoint id="defaultHttpEndpoint" 
-	    host="localhost"
-	    httpPort="9124"
+		host="localhost"
+		httpPort="9124"
 		httpsPort="9125">
 	</httpEndpoint>
 
