@@ -51,7 +51,7 @@
 		file . Bean name is the ejb-name of the enterprise bean. Module name is the 
 		name of the module in which the bean is packaged. Define the destinationRef 
 		pointing to a valid jmsQueue ID. -->
-	<jmsActivationSpec id="JMSApp/SampleMDB">
+	<jmsActivationSpec id="jms11-JMSSample/SampleMDB">
 		<properties.wasJms destinationRef="jndi/MDBQ" />
 	</jmsActivationSpec>
 
