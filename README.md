@@ -1,9 +1,11 @@
 # sample.jms
 Liberty JMS sample
 
-This sample project contains a simple JMS Servlet application called JMSSample. JMSSample listens for HTTP requests sent to `localhost:9124/jms11-JMSSample`, and responds with various options.
+This sample project contains a simple JMS Servlet application called JMSSample. JMSSample listens for HTTP requests sent to `localhost:9124/jms11-JMSSample`, and responds with various actions.
 There are 2 main Servlets that are contained:
+
 1. P2P : Point-to-Point Messaging uses JMS Queue to send and receive messages.  It also contains MDB message send and response.
+
 2. PubSub : Publish-and-Subscribe Messaging uses JMS topic to send and receive messages. 
 
 ## Running with Maven
