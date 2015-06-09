@@ -24,8 +24,13 @@ Use the following steps to run the application with Maven:
     $ mvn clean install
     ```
 
-Once the server is running, the Queue application actions will be available under [http://localhost:9124/jms11-JMSSample/JMSSampleP2P?ACTION=listAction](http://localhost:9124/jms11-JMSSample/JMSSampleP2P?ACTION=listAction).
-the Topic application actions will be available under [http://localhost:9124/jms11-JMSSample/JMSSamplePubSub?ACTION=listAction](http://localhost:9124/jms11-JMSSample/JMSSamplePubSub?ACTION=listAction).
+Once the server is running, the Queue application actions will be available under :
+
+[http://localhost:9124/jms11-JMSSample/JMSSampleP2P?ACTION=listAction](http://localhost:9124/jms11-JMSSample/JMSSampleP2P?ACTION=listAction).
+
+the Topic application actions will be available under :
+
+[http://localhost:9124/jms11-JMSSample/JMSSamplePubSub?ACTION=listAction](http://localhost:9124/jms11-JMSSample/JMSSamplePubSub?ACTION=listAction).
 
 # Notice
 
