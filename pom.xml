@@ -33,7 +33,7 @@
         </license>
     </licenses>
 
-	<scm>
+    <scm>
         <connection>scm:git:git@github.com:WASdev/sample.jms11.git</connection>
         <developerConnection>scm:git:git@github.com:WASdev/sample.jms11.git</developerConnection>
         <url>git@github.com:WASdev/sample.jms11.git</url>
