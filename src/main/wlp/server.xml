@@ -9,9 +9,9 @@
 	</featureManager>
 
 
-	<httpEndpoint id="defaultHttpEndpoint" host="localhost"
-	    host="*"
-		httpPort="9124"
+	<httpEndpoint id="defaultHttpEndpoint" 
+	    host="localhost"
+	    httpPort="9124"
 		httpsPort="9125">
 	</httpEndpoint>
 
