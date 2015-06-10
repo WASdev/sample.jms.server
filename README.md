@@ -41,7 +41,7 @@ the Topic application actions will be available under :
 
 2. To start the Liberty server, execute the following:
     ```bash
-    $ mvn liberty:start
+    $ mvn liberty:start-server
     ```
 
 	
