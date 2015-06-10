@@ -1,5 +1,5 @@
-# sample.jms
-Liberty JMS sample
+# sample.jms11
+Liberty JMS 1.1 sample
 
 This sample project contains a simple JMS Servlet application called JMSSample. JMSSample listens for HTTP requests sent to `localhost:9124/jms11-JMSSample`, and responds with various actions.
 There are 2 main Servlets that are contained:
@@ -21,7 +21,7 @@ Use the following steps to run the application with Maven:
 
 2. Execute full Maven build. This will cause Liberty Maven Plug-in to download and install Liberty profile server.
     ```bash
-    $ mvn clean install
+    $ mvn -Pwlp clean install
     ```
 
 Once the server is running, the Queue application actions will be available under :
@@ -34,7 +34,7 @@ the Topic application actions will be available under :
 
 # Notice
 
-© Copyright IBM Corporation 2015.
+Â© Copyright IBM Corporation 2015.
 
 # License
 
