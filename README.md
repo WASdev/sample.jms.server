@@ -32,12 +32,14 @@ the Topic application actions will be available under :
 
 [http://localhost:9124/jms11-JMSSample/JMSSamplePubSub?ACTION=listAction](http://localhost:9124/jms11-JMSSample/JMSSamplePubSub?ACTION=listAction).
 
-3. To stop the Liberty server, execute the following (Note: If you would like to re-install Liberty, first you must stop the Liberty sserver with this command, otherwise installation will fail:
+## Useful Maven Commands
+
+1. To stop the Liberty server, execute the following (Note: If you would like to re-install Liberty, first you must stop the Liberty server with this command, otherwise installation will fail:
     ```bash
     $ mvn liberty:stop-server
     ```
 
-4. To start the Liberty server, execute the following:
+2. To start the Liberty server, execute the following:
     ```bash
     $ mvn liberty:start
     ```
