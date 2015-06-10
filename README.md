@@ -39,7 +39,7 @@ the Topic application actions will be available under :
     $ mvn liberty:stop-server
     ```
 
-2. To start the Liberty server, execute the following (Note: To reflect the changes in server.xml, please edit the src/main/wlp/server.xml, then run start-server.  Any changes that is made in target/liberty/wlp/usr/servers/defaultServer/server.xml will be overwritten upon start-server command):
+2. To start the Liberty server, execute the following (Note: To reflect the changes in server.xml, please edit the src/main/wlp/server.xml, then run start-server.  Any changes made in target/liberty/wlp/usr/servers/defaultServer/server.xml will be overwritten once start-server is executed.):
     ```bash
     $ mvn liberty:start-server
     ```
