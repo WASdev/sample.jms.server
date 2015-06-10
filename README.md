@@ -21,7 +21,7 @@ Use the following steps to run the application with Maven:
 
 2. Execute full Maven build. This will cause Liberty Maven Plug-in to download and install Liberty profile server.
     ```bash
-    $ mvn -Pwlp clean install
+    $ mvn clean install
     ```
 
 Once the server is running, the Queue application actions will be available under :
@@ -34,12 +34,12 @@ the Topic application actions will be available under :
 
 #### Useful Maven Commands
 
-1. To stop the Liberty server, execute the following (Note: If you would like to re-install Liberty, first you must stop the Liberty server with this command, otherwise installation will fail:
+1. To stop the Liberty server, execute the following (Note: If you would like to re-install Liberty, first you must stop the Liberty server with this command, otherwise installation will fail)
     ```bash
     $ mvn liberty:stop-server
     ```
 
-2. To start the Liberty server, execute the following (Note: To reflect the changes in server.xml, please edit the src/main/wlp/server.xml, then run start-server.  Any changes made in target/liberty/wlp/usr/servers/defaultServer/server.xml will be overwritten once start-server is executed.):
+2. To start the Liberty server, execute the following (Note: To reflect the changes in server.xml, please edit the src/main/wlp/server.xml, then run start-server.  Any changes made in target/liberty/wlp/usr/servers/defaultServer/server.xml will be overwritten once start-server is executed)
     ```bash
     $ mvn liberty:start-server
     ```
