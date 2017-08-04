@@ -8,6 +8,8 @@ There are 2 main Servlets that are contained:
 
 2. PubSub : Publish-and-Subscribe Messaging uses JMS topic to send and receive messages. 
 
+Note: The Server and Client versions of the sample are currently the same except for the server.xml. There is a sample client server.xml in the wlp directory structure.
+
 ## Running with Maven
 
 This project can be build with [Apache Maven](http://maven.apache.org/). The project uses [Liberty Maven Plug-in][] to automatically download and install Liberty profile runtime from the [Liberty repository](https://developer.ibm.com/wasdev/downloads/). Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server. 
