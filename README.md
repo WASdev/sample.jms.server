@@ -1,4 +1,5 @@
 # sample.jms11
+
 Liberty JMS 1.1 sample
 
 This sample project contains a simple JMS Servlet application called JMSSample. JMSSample listens for HTTP requests sent to `localhost:9124/jms11-JMSSample`, and responds with various actions.
@@ -6,24 +7,26 @@ There are 2 main Servlets that are contained:
 
 1. P2P : Point-to-Point Messaging uses JMS Queue to send and receive messages.  It also contains MDB message send and response.
 
-2. PubSub : Publish-and-Subscribe Messaging uses JMS topic to send and receive messages. 
+2. PubSub : Publish-and-Subscribe Messaging uses JMS topic to send and receive messages.
 
 Note: The Server and Client versions of the sample are currently the same except for the server.xml. There is a sample client server.xml in the wlp directory structure.
 
 ## Running with Maven
 
-This project can be build with [Apache Maven](http://maven.apache.org/). The project uses [Liberty Maven Plug-in][] to automatically download and install Liberty profile runtime from the [Liberty repository](https://developer.ibm.com/wasdev/downloads/). Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server. 
+This project can be build with [Apache Maven](http://maven.apache.org/). The project uses [Liberty Maven Plug-in][] to automatically download and install Liberty profile runtime from the [Liberty repository](https://developer.ibm.com/wasdev/downloads/). Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server.
 
 Use the following steps to run the application with Maven:
 
-1. Set the `IBM_LIBERTY_LICENSE` environment property with the license code found in the Liberty license file. See the following [instructions][Liberty License Instructions] on obtaining the license code. 
+1. Set the `IBM_LIBERTY_LICENSE` environment property with the license code found in the Liberty license file. See the following [instructions][Liberty License Instructions] on obtaining the license code.
+
     ```bash
-    $ export IBM_LIBERTY_LICENSE=<license code>
+    export IBM_LIBERTY_LICENSE=<license code>
     ```
 
 2. Execute full Maven build. This will cause Liberty Maven Plug-in to download and install Liberty profile server.
+
     ```bash
-    $ mvn clean install
+    mvn clean install liberty:create liberty:install-server liberty:install-feature liberty:deploy
     ```
 
 Once the server is running, the Queue application actions will be available under :
@@ -34,24 +37,25 @@ the Topic application actions will be available under :
 
 [http://localhost:9124/jms11-JMSSample/JMSSamplePubSub?ACTION=listAction](http://localhost:9124/jms11-JMSSample/JMSSamplePubSub?ACTION=listAction).
 
-#### Useful Maven Commands
+### Useful Maven Commands
 
 1. To stop the Liberty server, execute the following (Note: If you would like to re-install Liberty, first you must stop the Liberty server with this command, otherwise installation will fail)
+
     ```bash
-    $ mvn liberty:stop-server
+    mvn liberty:stop-server
     ```
 
 2. To start the Liberty server, execute the following (Note: To reflect the changes in server.xml, please edit the src/main/wlp/server.xml, then run start-server.  Any changes made in target/liberty/wlp/usr/servers/defaultServer/server.xml will be overwritten once start-server is executed)
+
     ```bash
-    $ mvn liberty:start-server
+    mvn liberty:start-server
     ```
 
-	
-# Notice
+## Notice
 
 © Copyright IBM Corporation 2015.
 
-# License
+## License
 
 ```text
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -69,4 +73,3 @@ limitations under the License.
 
 [Liberty Maven Plug-in]: https://github.com/WASdev/ci.maven
 [Liberty License Instructions]: https://github.com/WASdev/ci.maven#using-a-repository
-
