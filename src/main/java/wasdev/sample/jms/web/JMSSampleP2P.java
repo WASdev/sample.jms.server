@@ -14,7 +14,7 @@
  * THE SAMPLE SOURCE CODE. IBM HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT,
  * UPDATES, ENHANCEMENTS OR MODIFICATIONS TO THE SAMPLE SOURCE CODE.
  *
- * (C) Copyright IBM Corp. 2001, 2013.
+ * (C) Copyright IBM Corp. 2001, 2021.
  * All Rights Reserved. Licensed Materials - Property of IBM.
  */
 
@@ -66,7 +66,7 @@ public class JMSSampleP2P extends HttpServlet {
 
 			if (strAction == null) {
 				out.println("Please specify the Action");
-				out.println("Example : http://<host>:<port>/JMSApp/JMSSampleP2P?ACTION=sendAndReceive");
+				out.println("Example : http://<host>:<port>/jms11-JMSSample/JMSSampleP2P?ACTION=sendAndReceive");
 			} else if (strAction.equalsIgnoreCase("sendAndReceive")) {
 				// call the Send and Receive Message
 				sendAndReceive(request, response);

@@ -14,7 +14,7 @@
  * THE SAMPLE SOURCE CODE. IBM HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT,
  * UPDATES, ENHANCEMENTS OR MODIFICATIONS TO THE SAMPLE SOURCE CODE.
  *
- * (C) Copyright IBM Corp. 2001, 2013.
+ * (C) Copyright IBM Corp. 2001, 2021.
  * All Rights Reserved. Licensed Materials - Property of IBM.
  */
 
@@ -66,7 +66,7 @@ public class JMSSamplePubSub extends HttpServlet {
 
 			if(strAction == null){
 				out.println("Please specify the Action");
-				out.println("Example : http://<host>:<port>/JMSApp/JMSSamplePubSub?ACTION=nonDurableSubscriber");
+				out.println("Example : http://<host>:<port>/jms11-JMSSample/JMSSamplePubSub?ACTION=nonDurableSubscriber");
 			}else if(strAction.equalsIgnoreCase("nonDurableSubscriber")){
 				// Create a non durable subscriber and publish and receive the message from topic
 				nonDurableSubscriber(request, response);

@@ -23,7 +23,7 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    <name>Liberty Profile Sample - jms1.1</name>
+    <name>Liberty Sample - JMS</name>
     <url>https://wasdev.github.io</url>
 
     <licenses>
@@ -35,9 +35,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:WASdev/sample.jms11.git</connection>
-        <developerConnection>scm:git:git@github.com:WASdev/sample.jms11.git</developerConnection>
-        <url>git@github.com:WASdev/sample.jms11.git</url>
+        <connection>scm:git:git@github.com:WASdev/sample.jms.server.git</connection>
+        <developerConnection>scm:git:git@github.com:WASdev/sample.jms.server.git</developerConnection>
+        <url>git@github.com:WASdev/sample.jms.server.git</url>
     </scm>
 
     <build>
@@ -45,19 +45,10 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.3.4</version>
+                <version>3.4</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <features>
-                        <acceptLicense>true</acceptLicense>
-                        <feature>wasJmsClient-2.0</feature>
-                        <feature>wasJmsServer-1.0</feature>
-                        <feature>jmsMdb-3.2</feature>
-                        <feature>jsp-2.3</feature>
-                    </features>
-                    <background>true</background>
                     <verifyTimeout>40</verifyTimeout>
-                    <appArchive>${project.build.directory}${file.separator}${project.artifactId}-${project.version}.war</appArchive>
                 </configuration>
             </plugin>
         </plugins>
