@@ -22,8 +22,12 @@ package wasdev.sample.jms.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
+import javax.jms.JMSException;
+import javax.jms.Message;
 import javax.jms.Queue;
+import javax.jms.QueueBrowser;
 import javax.jms.QueueConnection;
 import javax.jms.QueueConnectionFactory;
 import javax.jms.QueueReceiver;
@@ -31,6 +35,7 @@ import javax.jms.QueueSender;
 import javax.jms.QueueSession;
 import javax.jms.TextMessage;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -84,6 +89,8 @@ public class JMSSampleP2P extends HttpServlet {
 				// Send message to be processed by MDB and wait from MDB
 				// response
 				mdbRequestResponse(request, response);
+			}else if (strAction.equalsIgnoreCase("getMessageCount")) {
+				getMessageCount(request, response);
 			} else {
 				out.println("Incorrect Action Specified, the valid actions are");
 				out.println("ACTION=sendAndReceive");
@@ -91,6 +98,7 @@ public class JMSSampleP2P extends HttpServlet {
 				out.println("ACTION=receiveAllMessages");
 				out.println("ACTION=receiveAllMessagesSelectors");
 				out.println("ACTION=mdbRequestResponse");
+				out.println("ACTION=getMessageCount");
 			}
 
 		} catch (Exception e) {
@@ -338,6 +346,18 @@ public class JMSSampleP2P extends HttpServlet {
 
 		out.println("Message sent successfully");
 
+
+		QueueBrowser queueBrowser = session.createBrowser(queue);
+		Enumeration e = queueBrowser.getEnumeration();
+        int numMsgs = 0;
+
+        // count number of messages
+        while (e.hasMoreElements()) {
+            Message message = (Message) e.nextElement();
+            numMsgs++;
+        }
+
+        System.out.println(queue + " has " + numMsgs + " messages");
 		// Waiting for the MDB to process the message and send the reply message
 		// Receive the message from MDBREPLYQ to validate the test scenario
 		Queue queue2 = (Queue) new InitialContext()
@@ -367,5 +387,40 @@ public class JMSSampleP2P extends HttpServlet {
 		out.println("MDBRequestResponse Completed");
 
 	}// end of MDBRequestResponse
+	
+	private void getMessageCount(HttpServletRequest request, HttpServletResponse response) throws IOException, NamingException, JMSException {
+		PrintWriter out = response.getWriter();
+		out.println("getMessageCount Started");
 
+		// create a queue connection factory
+		QueueConnectionFactory cf1 = (QueueConnectionFactory) new InitialContext()
+				.lookup("java:comp/env/jndi_JMS_BASE_QCF");
+		// create a queue by looking up from the JNDI repository
+		Queue queue = (Queue) new InitialContext()
+				.lookup("java:comp/env/jndi_INPUT_Q");
+
+		// create a queue connection
+		QueueConnection con = cf1.createQueueConnection();
+		con.start();
+
+		QueueSession session = con.createQueueSession(false,
+				javax.jms.Session.AUTO_ACKNOWLEDGE);
+
+		QueueBrowser queueBrowser = session.createBrowser(queue);
+		Enumeration e = queueBrowser.getEnumeration();
+		int numMsgs = 0;
+
+		// count number of messages
+		while (e.hasMoreElements()) {
+			e.nextElement();
+			numMsgs++;
+		}
+
+		out.println(queue + " has " + numMsgs + " messages");
+
+		if (con != null)
+			con.close();
+
+		out.println("getMessageCount Completed");
+	}
 }
